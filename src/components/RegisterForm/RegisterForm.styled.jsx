@@ -1,17 +1,36 @@
 import styled from 'styled-components';
-import { ErrorMessage } from 'formik';
-import { Form, Field } from 'formik';
 
-export const FormStyled = styled(Form)`
+export const Wrapper = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Thumb = styled.div`
+  position: absolute;
+  top: 160px;
+  left: 32%;
+`;
+
+export const Form = styled.form`
   width: 320px;
 `;
 
-export const InputStyled = styled(Field)`
-  padding: ${p => p.theme.spacing(8)};
+export const FormLabel = styled.label`
+  display: flex;
+  flex-direction: column;
   font-size: 20px;
   font-weight: 600;
+  margin-bottom: 16px;
+`;
+
+export const FormInput = styled.input`
+  padding: ${p => p.theme.spacing(8)};
   width: 300px;
   height: 40px;
+  font-size: 20px;
+  font-weight: 600;
   background: transparent;
   display: grid;
   align-items: center;
@@ -37,21 +56,14 @@ export const InputStyled = styled(Field)`
     box-shadow: 0px 0px 0px #c8d0e7, 0px 0px 0px #ffffff,
       -3px -3px 5px inset #ffffff, 3px 3px 5px inset rgba(0, 0, 0, 0.75);
   }
-`;
 
-export const Label = styled.label`
-  display: flex;
-  flex-direction: column;
-  font-size: 20px;
-  font-weight: 600;
-
-  &:not(:last-child) {
-    margin-bottom: 16px;
+  &:invalid {
+    border-color: #cf2121;
   }
 `;
 
-export const ButtonAdd = styled.button`
-  margin: 30px auto 15px;
+export const ButtonReg = styled.button`
+  margin: 0 auto 40px;
   width: 180px;
   height: 40px;
   border-radius: 0 18px;
@@ -77,7 +89,7 @@ export const ButtonAdd = styled.button`
     border: 3px solid #e4ebf5;
     z-index: 1;
   }
-  &:hover::after {
+  &:hover {
     box-shadow: 0px 0px 0px #c8d0e7, 0px 0px 0px #ffffff,
       -3px -3px 5px inset #ffffff, 3px 3px 5px inset rgba(0, 0, 0, 0.75);
   }
@@ -90,7 +102,8 @@ export const ButtonAdd = styled.button`
   }
 `;
 
-export const ErrMsg = styled(ErrorMessage)`
+export const TextReg = styled.h3`
   color: #16093a;
-  font-size: 16px;
+  transition: 0.5s;
+  pointer-events: none;
 `;

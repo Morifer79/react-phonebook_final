@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/selectors';
-import { addNewContact } from 'redux/operations';
+import { selectContacts } from 'redux/contacts/contactSelectors';
+import { addContact } from 'redux/contacts/contactOperations';
+import { TextReg } from 'components/RegisterForm/RegisterForm.styled';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import {
   ButtonAdd,
   ErrMsg,
   FormStyled,
-  FormWrapper,
   InputStyled,
   Label,
 } from 'components/ContactForm/ContactForm.styled';
@@ -22,8 +22,8 @@ const SignupSchema = Yup.object().shape({
       'Name may contain only letters, apostrophe, dash and spaces.'
     ),
   number: Yup.string()
-    .min(12, 'enter the number in the format XXX-XXX-XXXX')
-    .max(12, 'enter the number in the format XXX-XXX-XXXX')
+    .min(9, 'enter the number in the format XXX-XX-XX')
+    .max(9, 'enter the number in the format XXX-XX-XX')
     .required('The field cannot be left empty!')
     .matches(
       /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/,
@@ -52,31 +52,32 @@ export const ContactForm = () => {
       return;
     }
 
-    dispatch(addNewContact(person));
+    dispatch(addContact(person));
+
     resetForm();
   };
 
   return (
-    <FormWrapper>
-      <Formik
-        initialValues={{ name: '', number: '' }}
-        onSubmit={handleSubmit}
-        validationSchema={SignupSchema}
-      >
-        <FormStyled autoComplete="off">
-          <Label>
-            Name
-            <InputStyled type="text" name="name" required />
-            <ErrMsg name="name" component="div" />
-          </Label>
-          <Label>
-            Number
-            <InputStyled type="tel" name="number" required />
-            <ErrMsg name="number" component="div" />
-          </Label>
-          <ButtonAdd type="submit">Add contact</ButtonAdd>
-        </FormStyled>
-      </Formik>
-    </FormWrapper>
+    <Formik
+      initialValues={{ name: '', number: '' }}
+      onSubmit={handleSubmit}
+      validationSchema={SignupSchema}
+    >
+      <FormStyled autoComplete="off">
+        <Label>
+          Name
+          <InputStyled type="text" name="name" required />
+          <ErrMsg name="name" component="div" />
+        </Label>
+        <Label>
+          Number
+          <InputStyled type="tel" name="number" required />
+          <ErrMsg name="number" component="div" />
+        </Label>
+        <ButtonAdd type="submit">
+          <TextReg>Add contact</TextReg>
+        </ButtonAdd>
+      </FormStyled>
+    </Formik>
   );
 };

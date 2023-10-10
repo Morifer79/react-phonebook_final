@@ -1,55 +1,67 @@
 import styled from 'styled-components';
 
 export const ContactsList = styled.ul`
-  padding: 20px 30px;
-
-  height: auto;
-  width: 40%;
-  border-radius: ${p => p.theme.radii.lg};
-  box-shadow: 12px 12px 20px ${p => p.theme.colors.shadow},
-    -13px -8px 20px 0px rgba(84, 46, 197, 0.2);
+  /*margin: 20px 0 0 -60px;*/
+  margin-top: 20px;
+  /*width: 100%;*/
 `;
 
 export const ContactsListItem = styled.li`
-  padding-right: ${p => p.theme.spacing(15)};
-
-  width: 100%;
-  display: inline-flex;
+  /*width: 100%;*/
+  display: flex;
   justify-content: space-between;
-  align-items: baseline;
+  align-items: center;
+	gap: 10px;
   pointer-events: none;
+  color: #16093a;
+  font-size: 20px;
+  font-weight: 600;
   transition: color ${p => p.theme.transition};
 
   &:hover {
-    color: ${p => p.theme.colors.salmon};
+    color: #cf2121;
   }
 `;
 
 export const ButtonDel = styled.button`
-  padding: 10px 30px;
-  margin-top: ${p => p.theme.spacing(5)};
+  margin-bottom: ${p => p.theme.spacing(3)};
 
-  cursor: pointer;
+  font-size: 18px;
   pointer-events: auto;
-  font-size: 15px;
-  letter-spacing: 2px;
-  border: none;
-  border-radius: ${p => p.theme.radii.sm};
-  background: none;
-  color: rgba(255, 255, 255, 0.63);
-  box-shadow: 7px 6px 9px 0px ${p => p.theme.colors.shadow},
-    -5px -4px 14px 0px rgba(84, 56, 197, 0.2);
-  transition: color ${p => p.theme.transition},
-    background-color ${p => p.theme.transition};
+  color: #16093a;
+  width: 130px;
+  height: 35px;
+  border-radius: 0 18px;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+  transition: 0.5s;
 
-  &:hover {
-    color: ${p => p.theme.colors.salmon};
-    background-color: ${p => p.theme.colors.hoverbtn};
+  &::after {
+    transition: 0.5s;
+    content: '';
+    width: 130px;
+    height: 35px;
+    box-shadow: 1px 1px 2px #c8d0e7, -2px -2px 3px #ffffff,
+      0px 0px 0px inset #ffffff, 0px 0px 0px inset rgba(0, 0, 0, 0.75);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 0 18px;
+    border: 3px solid #e4ebf5;
+    z-index: 1;
+  }
+  &:hover::after {
+    box-shadow: 0px 0px 0px #c8d0e7, 0px 0px 0px #ffffff,
+      -3px -3px 5px inset #ffffff, 3px 3px 5px inset rgba(0, 0, 0, 0.75);
   }
 
-  &:active {
-    box-shadow: inset 7px 6px 9px 0px ${p => p.theme.colors.shadow},
-      inset -5px -4px 14px 0px rgba(84, 56, 197, 0.2);
-    color: rgba(255, 255, 255, 0.24);
+  &:hover h3 {
+    color: #cf2121;
+    letter-spacing: 1px;
+  }
+  &:active h3 {
+    transition: 0.1s;
+    letter-spacing: 2px;
   }
 `;

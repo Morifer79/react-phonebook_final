@@ -22,17 +22,15 @@ export const GlobalStyle = createGlobalStyle`
 
 	body {
 		margin: 0;
-		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-		sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	color: ${p => p.theme.colors.white};
-  background-color: ${p => p.theme.colors.mainbg};
-	letter-spacing: 0.03em;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.17;
+		font-family: 'Monotype Corsiva';
+		font-style: italic;
+		font-weight: 400;
+		font-display: swap;
+		font-size: 16px;
+		color: ${p => p.theme.colors.text};
+		background-color: ${p => p.theme.colors.white};
+		letter-spacing: 0.03em;
+		line-height: 1.17;
 	}
 
 	code {

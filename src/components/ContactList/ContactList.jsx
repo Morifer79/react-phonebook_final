@@ -1,8 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact, fetchAllContacts } from 'redux/operations';
-import { useEffect } from 'react';
-import { nanoid } from 'nanoid';
-import { Loader } from 'components/Loader/Loader';
+import { deleteContact } from 'redux/contacts/contactOperations';
+import { TextReg } from 'components/RegisterForm/RegisterForm.styled';
 import {
   ContactsList,
   ContactsListItem,
@@ -10,41 +8,46 @@ import {
 } from './ContactList.styled';
 import {
   selectContacts,
-  selectError,
   selectFilteredContacts,
-  selectIsLoading,
-} from 'redux/selectors';
+} from 'redux/contacts/contactSelectors';
 
 export const ContactList = () => {
   const contacts = useSelector(selectContacts);
-  const error = useSelector(selectError);
-  const isLoading = useSelector(selectIsLoading);
-  const dispatch = useDispatch();
+
   const filterContacts = useSelector(selectFilteredContacts);
 
-  useEffect(() => {
-    dispatch(fetchAllContacts());
-  }, [dispatch]);
+  const dispatch = useDispatch();
+
+  const handleDelete = e => {
+    dispatch(deleteContact(e.currentTarget.id));
+  };
+
+  const getVisibilityContacts = () => {
+    if (!filterContacts || filterContacts === '') {
+      return contacts;
+    }
+
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filterContacts)
+    );
+  };
+
+  const visibilityContacts = getVisibilityContacts();
+
+  //useEffect(() => {
+  //  dispatch(fetchContacts());
+  //}, [dispatch]);
 
   return (
-    <>
-      {isLoading && <Loader />}
-      {error && <p>{error}</p>}
-      {contacts && (
-        <ContactsList>
-          {filterContacts.map(({ id, name, number }) => (
-            <ContactsListItem key={nanoid()}>
-              {name}: {number}
-              <ButtonDel
-                type="button"
-                onClick={() => dispatch(deleteContact(id))}
-              >
-                Delete
-              </ButtonDel>
-            </ContactsListItem>
-          ))}
-        </ContactsList>
-      )}
-    </>
+    <ContactsList>
+      {visibilityContacts.map(({ id, name, number }) => (
+        <ContactsListItem key={id}>
+          {name}: {number}
+          <ButtonDel type="button" id={id} onClick={handleDelete}>
+            <TextReg>Delete</TextReg>
+          </ButtonDel>
+        </ContactsListItem>
+      ))}
+    </ContactsList>
   );
 };

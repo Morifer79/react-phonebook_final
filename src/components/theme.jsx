@@ -3,10 +3,9 @@ export const theme = {
     black: '#000000',
     white: '#ffffff',
     yellow: '#ffff00',
-    salmon: '#fa8072',
-    lawngreen: '#90ee90',
     mainbg: '#16093a',
     hoverbtn: '#160934',
+    text: '#cf2121',
     shadow: 'rgba(0, 0, 0, 0.32)',
   },
   radii: {
