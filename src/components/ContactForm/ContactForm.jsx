@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from 'redux/contacts/contactSelectors';
-import { addContact } from 'redux/contacts/contactOperations';
+import { selectContacts } from 'redux/selectors';
+import { addContact } from 'redux/contacts/operations';
 import { TextReg } from 'components/RegisterForm/RegisterForm.styled';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -35,25 +35,24 @@ export const ContactForm = () => {
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
-  const handleSubmit = (person, { resetForm }) => {
-    const existName = contacts.some(
-      ({ name }) => name.toLowerCase() === person.name.toLowerCase()
+  const isExistName = name => {
+    const lowerCaseName = name.toLowerCase();
+
+    return contacts.findIndex(
+      contact => contact.name.toLowerCase() === lowerCaseName
     );
+  };
 
-    const existNumber = contacts.some(({ number }) => number === person.number);
+  const handleSubmit = ({ name, number }, { resetForm }) => {
+    const existName = isExistName(name);
 
-    if (existName) {
+    if (!!~existName) {
       alert('A contact with this name already in contacts');
+      resetForm();
       return;
     }
 
-    if (existNumber) {
-      alert('A contact with this number already in contacts');
-      return;
-    }
-
-    dispatch(addContact(person));
-
+    dispatch(addContact({ name, number }));
     resetForm();
   };
 

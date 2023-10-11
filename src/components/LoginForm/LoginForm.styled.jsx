@@ -5,9 +5,10 @@ export const Form = styled.form`
 `;
 
 export const FormLabel = styled.label`
+color: ${p => p.theme.colors.red};
   display: flex;
   flex-direction: column;
   font-size: 20px;
   font-weight: 600;
-  margin-bottom: 16px;
+  margin-bottom: ${p => p.theme.spacing(8)};
 `;

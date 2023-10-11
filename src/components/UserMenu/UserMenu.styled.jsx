@@ -3,32 +3,33 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: ${p => p.theme.spacing(6)};
 `;
 
 export const GreetUser = styled.p`
   font-family: 'Monotype Corsiva';
   font-size: 26px;
   font-weight: 700;
-  color: #16093a;
+  color: ${p => p.theme.colors.blue};
 `;
 
 export const BattonLogOut = styled.button`
   font-family: 'Monotype Corsiva';
   font-size: 26px;
   font-weight: 700;
-  color: #cf2121;
+  color: ${p => p.theme.colors.red};
   border: none;
   background-color: inherit;
   cursor: pointer;
+  transition: color ${p => p.theme.transition};
 
   &:hover {
-    color: #d0ac69;
+    color: ${p => p.theme.colors.beige};
   }
 `;
 
 export const UserLogo = styled.img`
   width: 60px;
-  padding: 5px;
+  padding: ${p => p.theme.spacing(2.5)};
   border-radius: 50%;
 `;

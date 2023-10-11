@@ -1,19 +1,18 @@
 import { useDispatch } from 'react-redux';
 import { SearchInput, SearchLabelText } from './Filter.styled';
-import { applyFilter } from 'redux/contacts/filterSlice';
-import { nanoid } from 'nanoid';
+import { setFilterContacts } from 'redux/filterSlice';
 
 export const Filter = () => {
   const dispatch = useDispatch();
 
+  const handleFilter = e => {
+    dispatch(setFilterContacts(e.target.value));
+  };
+
   return (
-    <>
-      <SearchLabelText>Find contacts by name:</SearchLabelText>
-      <SearchInput
-        type="text"
-        id={nanoid()}
-        onChange={e => dispatch(applyFilter(e.target.value))}
-      />
-    </>
+    <SearchLabelText>
+      Find contacts by name:
+      <SearchInput type="text" onChange={handleFilter} />
+    </SearchLabelText>
   );
 };

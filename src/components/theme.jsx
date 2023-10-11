@@ -1,16 +1,12 @@
 export const theme = {
   colors: {
-    black: '#000000',
     white: '#ffffff',
-    yellow: '#ffff00',
-    mainbg: '#16093a',
-    hoverbtn: '#160934',
-    text: '#cf2121',
-    shadow: 'rgba(0, 0, 0, 0.32)',
-  },
-  radii: {
-    sm: '8px',
-    lg: '12px',
+    beige: '#d0ac69',
+    blue: '#16093a',
+    red: '#cf2121',
+    bshadow: '#e4ebf5',
+    shadow: '#c8d0e7',
+    rgba: 'rgba(0, 0, 0, 0.75)',
   },
   spacing: value => `${value * 2}px`,
   transition: '250ms linear',

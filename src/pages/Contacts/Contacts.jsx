@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from 'redux/contacts/contactOperations';
+import { fetchContacts } from 'redux/contacts/operations';
 import { ContactForm } from 'components/ContactForm/ContactForm';
 import { ContactList } from 'components/ContactList/ContactList';
-import { selectError, selectLoading } from 'redux/contacts/contactSelectors';
+import { selectError, selectLoading } from 'redux/selectors';
 import { Filter } from 'components/Filter/Filter';
 import { Loader } from 'components/Loader';
 import { Container, ThumbContact } from './Contacts.styled';

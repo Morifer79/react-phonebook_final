@@ -27,7 +27,7 @@ export const GlobalStyle = createGlobalStyle`
 		font-weight: 400;
 		font-display: swap;
 		font-size: 16px;
-		color: ${p => p.theme.colors.text};
+		color: ${p => p.theme.colors.blue};
 		background-color: ${p => p.theme.colors.white};
 		letter-spacing: 0.03em;
 		line-height: 1.17;

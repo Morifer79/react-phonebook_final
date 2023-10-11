@@ -18,11 +18,12 @@ export const Form = styled.form`
 `;
 
 export const FormLabel = styled.label`
+  color: ${p => p.theme.colors.red};
   display: flex;
   flex-direction: column;
   font-size: 20px;
   font-weight: 600;
-  margin-bottom: 16px;
+  margin-bottom: ${p => p.theme.spacing(8)};
 `;
 
 export const FormInput = styled.input`
@@ -37,9 +38,11 @@ export const FormInput = styled.input`
   justify-content: center;
   transition: 0.5s;
   border-radius: 0px 18px;
-  border: 3px solid #e4ebf5;
-  box-shadow: 1px 1px 2px #c8d0e7, -2px -2px 3px #ffffff,
-    0px 0px 0px inset #ffffff, 0px 0px 0px inset rgba(0, 0, 0, 0.75);
+  border: 3px solid ${p => p.theme.colors.bshadow};
+  box-shadow: 1px 1px 2px ${p => p.theme.colors.shadow},
+    -2px -2px 3px ${p => p.theme.colors.white},
+    0px 0px 0px inset ${p => p.theme.colors.white},
+    0px 0px 0px inset ${p => p.theme.colors.rgba};
   position: relative;
   transition: 0.5s;
   outline: 0;
@@ -53,12 +56,14 @@ export const FormInput = styled.input`
   }
 
   &:focus-visible {
-    box-shadow: 0px 0px 0px #c8d0e7, 0px 0px 0px #ffffff,
-      -3px -3px 5px inset #ffffff, 3px 3px 5px inset rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 0px ${p => p.theme.colors.shadow},
+      0px 0px 0px ${p => p.theme.colors.white},
+      -3px -3px 5px inset ${p => p.theme.colors.white},
+      3px 3px 5px inset ${p => p.theme.colors.rgba};
   }
 
   &:invalid {
-    border-color: #cf2121;
+    border-color: ${p => p.theme.colors.red};
   }
 `;
 
@@ -80,8 +85,10 @@ export const ButtonReg = styled.button`
     content: '';
     width: 180px;
     height: 40px;
-    box-shadow: 1px 1px 2px #c8d0e7, -2px -2px 3px #ffffff,
-      0px 0px 0px inset #ffffff, 0px 0px 0px inset rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 1px 2px ${p => p.theme.colors.shadow},
+      -2px -2px 3px ${p => p.theme.colors.white},
+      0px 0px 0px inset ${p => p.theme.colors.white},
+      0px 0px 0px inset ${p => p.theme.colors.rgba};
     position: absolute;
     top: 0px;
     left: 0px;
@@ -89,13 +96,18 @@ export const ButtonReg = styled.button`
     border: 3px solid #e4ebf5;
     z-index: 1;
   }
+
   &:hover {
-    box-shadow: 0px 0px 0px #c8d0e7, 0px 0px 0px #ffffff,
-      -3px -3px 5px inset #ffffff, 3px 3px 5px inset rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 0px ${p => p.theme.colors.shadow},
+      0px 0px 0px ${p => p.theme.colors.white},
+      -3px -3px 5px inset ${p => p.theme.colors.white},
+      3px 3px 5px inset ${p => p.theme.colors.rgba};
   }
+
   &:hover h3 {
     letter-spacing: 1px;
   }
+
   &:active h3 {
     transition: 0.1s;
     letter-spacing: 2px;
@@ -103,7 +115,7 @@ export const ButtonReg = styled.button`
 `;
 
 export const TextReg = styled.h3`
-  color: #16093a;
+  color: ${p => p.theme.colors.blue};
   transition: 0.5s;
   pointer-events: none;
 `;

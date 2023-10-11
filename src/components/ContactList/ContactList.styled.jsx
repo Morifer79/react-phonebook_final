@@ -1,25 +1,22 @@
 import styled from 'styled-components';
 
 export const ContactsList = styled.ul`
-  /*margin: 20px 0 0 -60px;*/
-  margin-top: 20px;
-  /*width: 100%;*/
+  margin-top: ${p => p.theme.spacing(10)};
 `;
 
 export const ContactsListItem = styled.li`
-  /*width: 100%;*/
   display: flex;
   justify-content: space-between;
   align-items: center;
-	gap: 10px;
+  gap: ${p => p.theme.spacing(5)};
   pointer-events: none;
-  color: #16093a;
+  color: ${p => p.theme.colors.blue};
   font-size: 20px;
   font-weight: 600;
   transition: color ${p => p.theme.transition};
 
   &:hover {
-    color: #cf2121;
+    color: ${p => p.theme.colors.red};
   }
 `;
 
@@ -28,7 +25,7 @@ export const ButtonDel = styled.button`
 
   font-size: 18px;
   pointer-events: auto;
-  color: #16093a;
+  color: ${p => p.theme.colors.blue};
   width: 130px;
   height: 35px;
   border-radius: 0 18px;
@@ -42,24 +39,30 @@ export const ButtonDel = styled.button`
     content: '';
     width: 130px;
     height: 35px;
-    box-shadow: 1px 1px 2px #c8d0e7, -2px -2px 3px #ffffff,
-      0px 0px 0px inset #ffffff, 0px 0px 0px inset rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 1px 2px ${p => p.theme.colors.shadow},
+      -2px -2px 3px ${p => p.theme.colors.white},
+      0px 0px 0px inset ${p => p.theme.colors.white},
+      0px 0px 0px inset ${p => p.theme.colors.rgba};
     position: absolute;
     top: 0px;
     left: 0px;
     border-radius: 0 18px;
-    border: 3px solid #e4ebf5;
+    border: 3px solid ${p => p.theme.colors.bshadow};
     z-index: 1;
   }
+
   &:hover::after {
-    box-shadow: 0px 0px 0px #c8d0e7, 0px 0px 0px #ffffff,
-      -3px -3px 5px inset #ffffff, 3px 3px 5px inset rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 0px ${p => p.theme.colors.shadow},
+      0px 0px 0px ${p => p.theme.colors.white},
+      -3px -3px 5px inset ${p => p.theme.colors.white},
+      3px 3px 5px inset ${p => p.theme.colors.rgba};
   }
 
   &:hover h3 {
-    color: #cf2121;
+    color: ${p => p.theme.colors.red};
     letter-spacing: 1px;
   }
+
   &:active h3 {
     transition: 0.1s;
     letter-spacing: 2px;

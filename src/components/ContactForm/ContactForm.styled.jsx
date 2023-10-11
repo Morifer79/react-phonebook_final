@@ -18,9 +18,11 @@ export const InputStyled = styled(Field)`
   justify-content: center;
   transition: 0.5s;
   border-radius: 0px 18px;
-  border: 3px solid #e4ebf5;
-  box-shadow: 1px 1px 2px #c8d0e7, -2px -2px 3px #ffffff,
-    0px 0px 0px inset #ffffff, 0px 0px 0px inset rgba(0, 0, 0, 0.75);
+  border: 3px solid ${p => p.theme.colors.bshadow};
+  box-shadow: 1px 1px 2px ${p => p.theme.colors.shadow},
+    -2px -2px 3px ${p => p.theme.colors.white},
+    0px 0px 0px inset ${p => p.theme.colors.white},
+    0px 0px 0px inset ${p => p.theme.colors.rgba};
   position: relative;
   transition: 0.5s;
   outline: 0;
@@ -34,8 +36,10 @@ export const InputStyled = styled(Field)`
   }
 
   &:focus-visible {
-    box-shadow: 0px 0px 0px #c8d0e7, 0px 0px 0px #ffffff,
-      -3px -3px 5px inset #ffffff, 3px 3px 5px inset rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 0px ${p => p.theme.colors.bshadow},
+      0px 0px 0px ${p => p.theme.colors.white},
+      -3px -3px 5px inset ${p => p.theme.colors.white},
+      3px 3px 5px inset ${p => p.theme.colors.rgba};
   }
 `;
 
@@ -44,9 +48,10 @@ export const Label = styled.label`
   flex-direction: column;
   font-size: 20px;
   font-weight: 600;
+	color: ${p => p.theme.colors.red};
 
   &:not(:last-child) {
-    margin-bottom: 16px;
+    margin-bottom: ${p => p.theme.spacing(8)};
   }
 `;
 
@@ -68,22 +73,29 @@ export const ButtonAdd = styled.button`
     content: '';
     width: 180px;
     height: 40px;
-    box-shadow: 1px 1px 2px #c8d0e7, -2px -2px 3px #ffffff,
-      0px 0px 0px inset #ffffff, 0px 0px 0px inset rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 1px 2px ${p => p.theme.colors.shadow},
+      -2px -2px 3px ${p => p.theme.colors.white},
+      0px 0px 0px inset ${p => p.theme.colors.white},
+      0px 0px 0px inset ${p => p.theme.colors.rgba};
     position: absolute;
     top: 0px;
     left: 0px;
     border-radius: 0 18px;
-    border: 3px solid #e4ebf5;
+    border: 3px solid ${p => p.theme.colors.bshadow};
     z-index: 1;
   }
+
   &:hover::after {
-    box-shadow: 0px 0px 0px #c8d0e7, 0px 0px 0px #ffffff,
-      -3px -3px 5px inset #ffffff, 3px 3px 5px inset rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 0px ${p => p.theme.colors.shadow},
+      0px 0px 0px ${p => p.theme.colors.white},
+      -3px -3px 5px inset ${p => p.theme.colors.white},
+      3px 3px 5px inset ${p => p.theme.colors.rgba};
   }
+
   &:hover h3 {
     letter-spacing: 1px;
   }
+
   &:active h3 {
     transition: 0.1s;
     letter-spacing: 2px;
@@ -91,6 +103,6 @@ export const ButtonAdd = styled.button`
 `;
 
 export const ErrMsg = styled(ErrorMessage)`
-  color: #16093a;
+  color: ${p => p.theme.colors.blue};
   font-size: 16px;
 `;
