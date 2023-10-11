@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[768],{3913:function(e,t,c){c.r(t),c.d(t,{default:function(){return l}});var r=c.p+"static/media/leather_scroll.f72b93cfe0cc2a976c7b.png",a=c(184);function l(){return(0,a.jsx)("img",{src:r,alt:"leather_scroll"})}}}]);
+//# sourceMappingURL=768.3d487b02.chunk.js.map
